@@ -93,6 +93,8 @@ details[open] summary::after{transform:rotate(90deg)}
 <div class="hero-pre">✦ The Magic Awaits ✦</div>
 <h1>Family Disney<span>Vacation 2026</span></h1>
 <div class="sub">June 6–13 · All-Star Sports Resort · Orlando, FL</div>
+<div id="countdown" style="font-size:22px;font-weight:800;color:#FFD700;margin-top:10px"></div>
+<div style="font-size:11px;color:rgba(255,255,255,0.5);margin-top:2px">Can't wait to do this together ✨</div>
 <div class="chips"><span class="chip">4 Disney Parks</span><span class="chip">Epic Universe</span><span class="chip">7 Nights</span><span class="chip">Parks Sun–Thu</span></div>
 </div>
 <div class="wrap">
@@ -373,8 +375,7 @@ Stack both = 4–5 pre-booked line skips + unlimited rolling adds<br>
 <div class="sec">Schedule</div>
 <div class="tl " style="--c:#475569"><div class="pip"></div><div class="tm" style="">AM</div><div class="nm">Check out and head home</div><div class="ds">Check out by 11 AM · drive or fly home</div></div>
 </div></details>
-<div class="footer" style="text-align:center;padding:20px 0 40px;font-size:10px;color:#8e8e93">
-Built with love · Updated Apr 2026 · Have the best trip ever ✨
+<div class="footer" style="padding:20px 0 40px">
 </div>
 </div>
 <script>
@@ -385,6 +386,19 @@ function goDay(n){
   el.setAttribute('open','');
   setTimeout(function(){el.scrollIntoView({behavior:'smooth',block:'start'})},100);
 }
+function updateCountdown(){
+  var trip=new Date('2026-06-06T00:00:00');
+  var now=new Date();
+  var diff=trip-now;
+  if(diff<=0){document.getElementById('countdown').textContent='🎉 Trip time! Let\'s go!';return}
+  var days=Math.floor(diff/(1000*60*60*24));
+  var hrs=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+  var mins=Math.floor((diff%(1000*60*60))/(1000*60));
+  var secs=Math.floor((diff%(1000*60))/1000);
+  document.getElementById('countdown').textContent=days+'d '+hrs+'h '+mins+'m '+secs+'s';
+}
+updateCountdown();
+setInterval(updateCountdown,1000);
 </script>
 </body>
 </html>
